@@ -1,0 +1,14 @@
+{
+  "name": "tcs-engine",
+  "version": "0.1.0",
+  "description": "TCS Engine — modular 2D/3D game engine by The Choco Studios",
+  "type": "module",
+  "private": false,
+  "main": "./dist/tcs-engine.umd.js",
+  "module": "./dist/tcs-engine.es.js",
+  "exports": { ".": { "import": "./dist/tcs-engine.es.js", "require": "./dist/tcs-engine.umd.js" } },
+  "files": ["dist", "src"],
+  "scripts": { "dev": "vite", "build": "vite build", "preview": "vite preview" },
+  "peerDependencies": { "three": ">=0.150.0" },
+  "devDependencies": { "three": "^0.160.0", "vite": "^5.0.0" }
+}
