@@ -2,6 +2,10 @@
 
 **TCS Engine** is The Choco Studios' modular, event-driven JavaScript game runtime for 2D Canvas and 3D Three.js projects. This repository includes the engine core and a first-person psychological-horror game, **FREKUENSI 03:17**, as an engine integration project.
 
+[![Download TCS Engine + FREKUENSI 03:17](https://img.shields.io/badge/DOWNLOAD-ZIP-orange?style=for-the-badge&logo=github)](https://github.com/chocoanakbaik/TCS-ENGINE/archive/refs/heads/main.zip)
+
+**Klik tombol di atas untuk langsung mengunduh seluruh proyek dalam format ZIP.** Arsip dibuat langsung oleh GitHub dari branch terbaru `main`.
+
 ## Source of truth
 
 The source of truth is this GitHub repository, **[chocoanakbaik/TCS-ENGINE](https://github.com/chocoanakbaik/TCS-ENGINE)** on branch `main`. All engine and game source files are committed directly in the repository. A compressed workspace snapshot is available at [`workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz`](workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz). The project synchronization rules are documented in `PROJECT_SYNC.md`.
