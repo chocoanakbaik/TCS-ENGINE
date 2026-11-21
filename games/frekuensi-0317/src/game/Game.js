@@ -76,7 +76,7 @@ export class Game {
       loading.classList.add('hidden');
       this.ui.showScreen('boot-screen');
       this.ui.showHUD();
-      this.ui.showMessage('STARTUP ERROR', 'Game gagal dimulai', `${error.message}. Periksa dukungan WebGL 2 dan jalankan lagi melalui START-FREKUENSI.bat.`, 'KEMBALI', () => this.ui.hideMessage());
+      this.ui.showMessage('STARTUP ERROR', 'Game gagal dimulai', `${error.message}. Periksa dukungan WebGL 2 dan jalankan kembali melalui RUN-FREKUENSI.bat.`, 'KEMBALI', () => this.ui.hideMessage());
     }
   }
 
