@@ -1,10 +1,10 @@
 # TCS Engine v0.2.0 + FREKUENSI 03:17
 
-**TCS Engine** is The Choco Studios' modular, event-driven JavaScript game runtime for 2D Canvas and 3D Three.js projects. This workspace includes the engine core and a first-person psychological-horror game, **FREKUENSI 03:17**, as an engine integration project.
+**TCS Engine** is The Choco Studios' modular, event-driven JavaScript game runtime for 2D Canvas and 3D Three.js projects. This repository includes the engine core and a first-person psychological-horror game, **FREKUENSI 03:17**, as an engine integration project.
 
 ## Source of truth
 
-The source of truth is the GitHub repository **[chocoanakbaik/TCS-ENGINE](https://github.com/chocoanakbaik/TCS-ENGINE)** on branch `main`. The complete VS Code workspace is also distributed as `TCS-ENGINE_FREKUENSI_0317.zip` in the repository root. The project synchronization rules are documented in `PROJECT_SYNC.md`.
+The source of truth is this GitHub repository, **[chocoanakbaik/TCS-ENGINE](https://github.com/chocoanakbaik/TCS-ENGINE)** on branch `main`. All engine and game source files are committed directly in the repository. A compressed workspace snapshot is available at [`workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz`](workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz). The project synchronization rules are documented in `PROJECT_SYNC.md`.
 
 ## Requirements
 - Node.js 18 or newer (Node.js 20 LTS recommended)
@@ -14,12 +14,14 @@ The source of truth is the GitHub repository **[chocoanakbaik/TCS-ENGINE](https:
 
 ## Open in Visual Studio Code
 
-1. Download `TCS-ENGINE_FREKUENSI_0317.zip` from the repository root, or download the repository and extract the nested workspace archive.
-2. Extract the archive.
-3. In VS Code, choose **File → Open Folder** and select the extracted `TCS-ENGINE` folder.
+1. On this repository page, click **Code → Download ZIP**, or clone the repository.
+2. Extract the downloaded repository ZIP.
+3. In VS Code, choose **File → Open Folder** and select the extracted `TCS-ENGINE` repository folder.
 4. Open **Terminal → New Terminal**.
 
 ## Run FREKUENSI 03:17
+
+From the repository root, run:
 
 ```bash
 npm install
