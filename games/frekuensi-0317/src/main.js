@@ -13,11 +13,26 @@ document.addEventListener('contextmenu', event => {
 
 window.addEventListener('beforeunload', () => game.dispose(), { once: true });
 
-if (!('WebGL2RenderingContext' in window)) {
-  document.getElementById('start-button').addEventListener('click', event => {
-    event.preventDefault();
-    game.ui.showMessage('KOMPATIBILITAS GRAFIS', 'WebGL 2 tidak tersedia', 'Perbarui browser dan driver grafis, lalu pastikan akselerasi perangkat keras aktif.', 'TUTUP', () => game.ui.hideMessage());
-  }, { capture: true, once: true });
+function detectWebGL2() {
+  try {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('webgl2', { failIfMajorPerformanceCaveat: false });
+    if (!context) return false;
+    context.getExtension('WEBGL_lose_context')?.loseContext();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+if (!detectWebGL2()) {
+  const warning = document.createElement('p');
+  warning.id = 'graphics-compatibility-warning';
+  warning.className = 'graphics-compatibility-warning';
+  warning.textContent = 'GRAFIS TIDAK DIDUKUNG: Browser tidak menyediakan WebGL 2. Aktifkan akselerasi perangkat keras dan perbarui driver grafis sebelum bermain.';
+  document.querySelector('.menu-actions').after(warning);
+  document.getElementById('start-button').disabled = true;
+  document.getElementById('continue-button').disabled = true;
 }
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
