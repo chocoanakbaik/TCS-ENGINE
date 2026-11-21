@@ -2,7 +2,6 @@ export { Engine } from './core/Engine.js';
 export { Loop } from './core/Loop.js';
 export { SceneManager } from './core/SceneManager.js';
 export { EventBus, eventBus } from './core/EventBus.js';
-export { default as defaultEventBus } from './core/EventBus.js';
 export { World } from './ecs/World.js';
 export { createEntityId, resetEntityCounter } from './ecs/Entity.js';
 export { System } from './ecs/System.js';

@@ -1,73 +1,72 @@
-# TCS Engine v0.1.0
+# TCS Engine v0.2.0 + FREKUENSI 03:17
 
-A modular, event-driven 2D/3D game engine for JavaScript projects, developed by **The Choco Studios**.
+**TCS Engine** is The Choco Studios' modular, event-driven JavaScript game runtime for 2D Canvas and 3D Three.js projects. This workspace includes the engine core and a first-person psychological-horror game, **FREKUENSI 03:17**, as an engine integration project.
 
-TCS Engine provides a practical mid-level foundation for browser games: an entity-component-system architecture, 2D Canvas and 3D Three.js rendering, input, audio, basic AABB physics, asset loading, UI overlays, scene management, and math helpers.
+## Source of truth
 
-> **Status:** Initial public development release. The API may evolve as it is tested in real projects.
+The source of truth is the GitHub repository **[chocoanakbaik/TCS-ENGINE](https://github.com/chocoanakbaik/TCS-ENGINE)** on branch `main`. The complete VS Code workspace is also distributed as `TCS-ENGINE_FREKUENSI_0317.zip` in the repository root. The project synchronization rules are documented in `PROJECT_SYNC.md`.
 
 ## Requirements
-- Node.js 18 or newer
-- A modern browser with Canvas support
-- WebGL support for 3D rendering
-- Three.js 0.150.0 or newer for 3D features
+- Node.js 18 or newer (Node.js 20 LTS recommended)
+- npm included with Node.js
+- Visual Studio Code or another code editor
+- A browser with WebGL 2 support for the 3D game
 
-## Install
-```bash
-npm install github:chocoanakbaik/TCS-ENGINE three
-```
-Three.js is a peer dependency. Install it in the consuming project when using the 3D renderer or GLTF loader.
+## Open in Visual Studio Code
 
-## Quick start (2D)
-```js
-import { Engine, Transform, Sprite } from 'tcs-engine';
-const engine = new Engine({ mode: '2d' });
-engine.init(document.querySelector('#game'));
-const player = engine.world.createEntity();
-engine.world.addComponent(player, new Transform(0, 0));
-const sprite = new Sprite();
-sprite.color = '#7c5cff'; sprite.width = 48; sprite.height = 48;
-engine.world.addComponent(player, sprite);
-engine.start();
-```
+1. Download `TCS-ENGINE_FREKUENSI_0317.zip` from the repository root, or download the repository and extract the nested workspace archive.
+2. Extract the archive.
+3. In VS Code, choose **File → Open Folder** and select the extracted `TCS-ENGINE` folder.
+4. Open **Terminal → New Terminal**.
 
-## Quick start (3D)
-```js
-import * as THREE from 'three';
-import { Engine, Transform } from 'tcs-engine';
-const engine = new Engine({ mode: '3d' });
-engine.init(document.querySelector('#game'));
-const entity = engine.world.createEntity();
-engine.world.addComponent(entity, new Transform(0, 0, 0));
-const mesh = new THREE.Mesh(new THREE.BoxGeometry(1,1,1), new THREE.MeshStandardMaterial({ color: 0x7c5cff }));
-engine.renderer.attachObject(entity, mesh);
-engine.start();
-```
+## Run FREKUENSI 03:17
 
-## Included systems
-- ECS: entities, components, queries, ordered systems
-- Canvas 2D and Three.js 3D renderers
-- Keyboard, mouse, and touch input
-- Web Audio API helpers
-- Velocity integration, optional gravity, and basic AABB overlap events
-- Image, audio, JSON, and GLTF asset loading with caching
-- DOM UI overlay and HUD management
-- Event bus and scene manager
-- Vector, interpolation, angle, and collision math helpers
-
-## Development
 ```bash
 npm install
-npm run dev
-npm run build
-npm run preview
+npm run dev:frekuensi
 ```
-The interactive example is served from `public/index.html` when running Vite.
 
-## Scope
-This is a mid-level runtime foundation, not a full game editor. It does not include a GUI editor, visual scripting, or multiplayer networking. Physics is intentionally basic and is not a replacement for a dedicated physics engine.
+Open the local URL printed by Vite (normally `http://127.0.0.1:4173`). The game runs locally; no hosted service or account is required.
 
-## License and attribution
-Developed and maintained by **The Choco Studios**.
+Build the production game:
 
-The repository's license and contribution policy will be published separately. Until then, do not assume that the code is offered under a particular open-source license.
+```bash
+npm run build:frekuensi
+```
+
+The output is written to `dist/frekuensi-0317/`.
+
+More detailed developer instructions are in [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md).
+
+## Run the engine demo
+
+```bash
+npm run dev
+```
+
+The original 2D/3D engine demonstration is served from `public/index.html`.
+
+## Run checks
+
+```bash
+npm test
+npm run build:frekuensi
+```
+
+## Project structure
+- `src/` — reusable TCS Engine runtime: ECS, lifecycle, input, physics, audio, UI, asset loading, and renderers.
+- `public/` — original engine demonstration.
+- `games/frekuensi-0317/` — game application, campaign content, world builder, player controller, enemy AI, audio direction, and UI.
+- `tests/` — automated runtime and gameplay tests.
+
+## Engine notes
+
+The 3D renderer supports `low`, `medium`, and `high` quality profiles. Low is the default, disables real-time shadows, uses a capped render pixel ratio, and requests a low-power WebGL context for entry-level GPUs. `Engine` accepts `rendererOptions` to configure these choices.
+
+## Campaign target
+
+The story has five chapters and a **125-minute target first-playthrough duration**, with optional records, hidden routes, puzzle-solving, and stealth exploration extending playtime. This is a design target, not a measured claim; a timed human playtest is still required to validate the final duration and difficulty.
+
+## Licensing
+
+TCS Engine and FREKUENSI 03:17 are developed by **The Choco Studios**. No third-party game art or audio packs are bundled. The GitHub repository currently does not declare a public open-source license; do not assume permission for redistribution or relicensing beyond the rights granted by the owner.

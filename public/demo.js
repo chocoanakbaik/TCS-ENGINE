@@ -3,7 +3,7 @@ import * as THREE from 'three';
 
 const app=document.querySelector('#app');
 const status=document.querySelector('#status');
-const buttons={2d:document.querySelector('#btn-2d'),3d:document.querySelector('#btn-3d')};
+const buttons={'2d':document.querySelector('#btn-2d'),'3d':document.querySelector('#btn-3d')};
 let engine=null;
 function boot(mode) {
   engine?.dispose();app.replaceChildren();

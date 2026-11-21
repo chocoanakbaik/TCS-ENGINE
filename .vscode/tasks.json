@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FREKUENSI 03:17: Install dependencies",
+      "type": "shell",
+      "command": "npm install",
+      "problemMatcher": []
+    },
+    {
+      "label": "FREKUENSI 03:17: Run game",
+      "type": "shell",
+      "command": "npm run dev:frekuensi",
+      "dependsOn": "FREKUENSI 03:17: Install dependencies",
+      "dependsOrder": "sequence",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": [{ "regexp": ".*" }],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "VITE v",
+          "endsPattern": "Local:.*http://"
+        }
+      }
+    },
+    {
+      "label": "TCS Engine: Run tests",
+      "type": "shell",
+      "command": "npm test",
+      "problemMatcher": []
+    },
+    {
+      "label": "FREKUENSI 03:17: Production build",
+      "type": "shell",
+      "command": "npm run build:frekuensi",
+      "problemMatcher": []
+    }
+  ]
+}

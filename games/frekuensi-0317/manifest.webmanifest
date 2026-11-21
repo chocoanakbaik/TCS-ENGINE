@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "FREKUENSI 03:17",
+  "short_name": "FREKUENSI",
+  "description": "First-person psychological horror adventure by The Choco Studios.",
+  "lang": "id-ID",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#071014",
+  "theme_color": "#071014",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "./store/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

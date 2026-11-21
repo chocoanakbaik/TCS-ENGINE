@@ -14,7 +14,7 @@ import { RENDER_MODE, TCS_VERSION } from '../constants.js';
 
 export class Engine {
   constructor(config={}) {
-    this.config={mode:RENDER_MODE.MODE_3D,gravity:false,autoStart:false,inputTarget:globalThis.window,...config};
+    this.config={mode:RENDER_MODE.MODE_3D,gravity:false,autoStart:false,inputTarget:globalThis.window,rendererOptions:{},...config};
     if(!Object.values(RENDER_MODE).includes(this.config.mode))throw new Error(`Unsupported render mode: ${this.config.mode}`);
     this.loop=new Loop();this.scenes=new SceneManager();this.world=new World();
     this.input=null;this.audio=null;this.renderer=null;this.assets=new AssetLoader();this.ui=null;
@@ -29,7 +29,7 @@ export class Engine {
       this.audio=new AudioSystem();this.audio.init();
       this.input=new InputSystem(this.config.inputTarget??window);
       this.renderer=this.config.mode===RENDER_MODE.MODE_3D
-        ?new Renderer3D(this.container):new Renderer2D(this.container);
+        ?new Renderer3D(this.container,this.config.rendererOptions??{}):new Renderer2D(this.container);
       this.ui=new UIManager(this.container);
       this.physics=new PhysicsSystem({useGravity:!!this.config.gravity});
       this.world.addSystem(this.physics);

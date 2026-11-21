@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071014">
+  <meta name="description" content="FREKUENSI 03:17 — atmospheric first-person horror adventure by The Choco Studios.">
+  <title>FREKUENSI 03:17 — The Choco Studios</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./store/icon.svg">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <main id="game-root" aria-label="FREKUENSI 03:17">
+    <div id="world-layer"></div>
+    <div id="weather-flash"></div>
+    <div id="vignette"></div>
+    <div id="film-grain"></div>
+    <div id="rain-overlay"></div>
+
+    <header id="brand-bar"><div class="brand-mark">TCS</div><div><b>THE CHOCO STUDIOS</b><small>INTERACTIVE FICTION DIVISION</small></div><span class="build-tag">PC · WEBGL</span></header>
+
+    <section id="boot-screen" class="screen active">
+      <div class="boot-content">
+        <div class="eyebrow"><span class="signal-dot"></span> REKAMAN ARSIP · 20 OKTOBER 2006</div>
+        <h1>FREKUENSI<br><em>03:17</em></h1>
+        <p class="title-sub">ADA SUARA YANG TIDAK PERNAH BERHENTI MEMANGGIL.</p>
+        <div class="title-rule"></div>
+        <div class="menu-actions">
+          <button id="start-button" class="primary-button"><span>01</span> MULAI PERJALANAN</button>
+          <button id="continue-button" class="text-button"><span>02</span> LANJUTKAN REKAMAN</button>
+          <button id="settings-button" class="text-button"><span>03</span> PENGATURAN</button>
+          <button id="credits-button" class="text-button"><span>04</span> KREDIT</button>
+        </div>
+        <div class="menu-foot"><span>JAWA BARAT · INDONESIA</span><span>TEKAN UNTUK MEMULAI</span></div>
+      </div>
+      <div class="boot-side-note">03:17<br><small>WIB</small></div>
+    </section>
+
+    <section id="intro-screen" class="screen panel-screen">
+      <div class="story-card">
+        <div class="eyebrow">BABAK PEMBUKA · SHIFT PENGGANTI</div>
+        <h2>Stasiun Cibunar<br><em>tidak pernah benar-benar tutup.</em></h2>
+        <p>Hujan turun sejak sore. Jalan menuju stasiun pemancar hampir tertutup kabut ketika Anda menerima kunci ruang operator. Petugas sebelumnya tidak datang untuk serah terima.</p>
+        <p>Di meja kerja, radio masih menyala. Jarumnya berhenti di satu angka: <strong>103.7 MHz</strong>.</p>
+        <p class="story-quote">“Kalau ada yang menyebut nama Anda dari radio, jangan dijawab.”</p>
+        <button id="enter-station" class="primary-button"><span>ENTER</span> MASUK KE STASIUN</button>
+      </div>
+    </section>
+
+    <section id="hud" class="hidden" aria-live="polite">
+      <div class="hud-top-left"><div id="chapter-number">CH 01</div><div id="chapter-name">SHIFT MALAM</div><div class="hud-separator"></div><div id="signal-status">NO SIGNAL</div></div>
+      <div class="hud-top-right"><div class="clock-label">JAM STASIUN</div><div id="clock">03:17</div></div>
+      <div class="objective-panel"><small>PROTOKOL OPERATOR</small><p id="objective-text">Cari sekring cadangan.</p><div class="objective-track"><span id="objective-progress-bar"></span></div><div id="objective-progress-label">0 / 2</div></div>
+      <div class="hud-bottom-left"><div class="battery-row"><span class="hud-icon">▰</span><div><small>SENTER</small><b id="battery-value">100%</b></div><div class="battery-track"><span id="battery-bar"></span></div></div><div class="noise-row"><span class="hud-icon">⌁</span><div><small>SUARA LANGKAH</small><b id="noise-label">LANGKAH TENANG</b></div><div class="noise-bars"><i></i><i></i><i></i><i></i><i></i></div></div><div id="inventory-items" class="inventory-items"><span class="empty-slot">—</span></div></div>
+      <div class="hud-bottom-right"><div class="control-chip"><kbd>F</kbd><span>INTERAKSI</span></div><div class="control-chip"><kbd>J</kbd><span>JURNAL</span></div><div class="control-chip"><kbd>T</kbd><span>SENTER</span></div></div>
+      <div id="interact-prompt" class="hidden"><kbd>F</kbd><span id="interact-text">PERIKSA</span></div>
+      <div id="threat-warning" class="hidden"><span class="warning-pulse"></span> ADA SESUATU YANG MENDENGAR</div>
+      <div id="journal-toast" class="hidden"></div>
+      <div id="screen-message" class="hidden"><div class="message-card"><small id="message-kicker">CATATAN</small><h2 id="message-title">Judul</h2><p id="message-copy">Isi</p><button id="message-button" class="primary-button">LANJUTKAN</button></div></div>
+    </section>
+
+    <div id="modal-layer" class="hidden">
+      <section id="radio-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow">PERANGKAT PENERIMA · FM</div><h2>Kalibrasi <em>sinyal</em></h2><p>Atur frekuensi sampai suara yang masuk menjadi jernih.</p><div class="frequency-readout"><span id="frequency-value">88.0</span><small>MHz</small></div><div class="tuner-scale"><div class="tuner-target" id="tuner-target"></div><div class="tuner-marker" id="tuner-marker"></div></div><input id="frequency-slider" class="frequency-slider" type="range" min="88" max="108" step="0.1" value="88" aria-label="Atur frekuensi radio"><div class="tuner-labels"><span>88.0</span><span>98.0</span><span>108.0</span></div><div id="radio-feedback" class="modal-feedback">Putar kenop hingga garis sinyal berimpit.</div><div class="modal-actions"><button id="freq-down">− TURUNKAN</button><button id="freq-up">NAIKKAN +</button><button id="tune-submit" class="primary-button">KUNCI FREKUENSI</button></div></section>
+      <section id="note-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div id="note-date" class="eyebrow">JURNAL OPERATOR</div><h2 id="note-title">Catatan</h2><div id="note-body" class="note-body"></div><button class="primary-button modal-wide" data-close>TUTUP JURNAL</button></section>
+      <section id="code-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow">PANEL KEAMANAN</div><h2 id="code-title">Panel akses</h2><p id="code-hint">Masukkan empat digit.</p><div id="code-display" class="code-display">_ _ _ _</div><div id="code-grid" class="code-grid"></div><div id="code-feedback" class="modal-feedback"></div><button id="code-submit" class="primary-button modal-wide">KONFIRMASI</button></section>
+      <section id="valve-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow">RUANG TEKANAN · SISTEM HIDRAULIK</div><h2>Seimbangkan <em>katup</em></h2><p>Gunakan diagram inspeksi. Putaran harus sesuai urutan.</p><div id="valve-list" class="valve-list"></div><div id="valve-feedback" class="modal-feedback"></div><button id="valve-submit" class="primary-button modal-wide">UJI TEKANAN</button></section>
+      <section id="ending-modal" class="modal hidden"><div class="eyebrow">03:17:59 · SIARAN TERAKHIR</div><h2>Suara itu <em>menunggu.</em></h2><p>Anda hanya memiliki satu kesempatan untuk menentukan apa yang akan dilakukan dengan frekuensi 103.7 MHz.</p><div class="ending-options"><button id="ending-send"><b>01 · KIRIM SIARAN</b><small>Biarkan suara itu menjangkau siapa pun yang masih mendengarkan.</small></button><button id="ending-cut"><b>02 · PUTUSKAN SUMBER</b><small>Hentikan pemancar. Tidak ada yang boleh mendengar lagi.</small></button></div></section>
+      <section id="pause-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow">REKAMAN DIJEDA</div><h2>Tarik <em>napas.</em></h2><div class="modal-actions vertical"><button id="resume-button" class="primary-button">LANJUTKAN</button><button id="pause-settings">PENGATURAN</button><button id="quit-button">KEMBALI KE MENU</button></div></section>
+      <section id="settings-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow">PREFERENSI OPERATOR</div><h2>Pengaturan</h2><label class="setting-row"><span>Kualitas grafis</span><select id="quality-select"><option value="low">Rendah · Stabil</option><option value="medium">Sedang</option><option value="high">Tinggi</option></select></label><label class="setting-row"><span>Sensitivitas mouse</span><input id="sensitivity-slider" type="range" min="0.0008" max="0.0045" step="0.0001"></label><label class="setting-row"><span>Volume utama</span><input id="volume-slider" type="range" min="0" max="1" step="0.05"></label><label class="setting-row setting-check"><span>Balik sumbu vertikal</span><input id="invert-y" type="checkbox"></label><button class="primary-button modal-wide" data-close>SIMPAN & TUTUP</button></section>
+      <section id="credits-modal" class="modal hidden"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow">PRODUKSI INDEPENDEN</div><h2>FREKUENSI <em>03:17</em></h2><p>Game horor first-person original oleh <strong>The Choco Studios</strong>.</p><p>Didukung oleh TCS Engine · dibuat dengan JavaScript dan Three.js.</p><button class="primary-button modal-wide" data-close>TUTUP</button></section>
+    </div>
+
+    <div id="loading-state" class="hidden"><div class="loading-mark">TCS</div><span>MENYIAPKAN REKAMAN...</span><div class="loading-track"><i></i></div></div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

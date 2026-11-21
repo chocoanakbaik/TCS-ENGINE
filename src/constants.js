@@ -1,4 +1,4 @@
-export const TCS_VERSION = '0.1.0';
+export const TCS_VERSION = '0.2.0';
 export const DEFAULT_FPS = 60;
 export const MAX_DELTA = 0.05;
 export const EVENTS = Object.freeze({
