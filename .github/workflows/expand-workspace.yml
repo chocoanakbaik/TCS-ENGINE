@@ -2,22 +2,26 @@ name: Expand TCS-ENGINE workspace snapshot
 on:
   push:
     paths:
-      - "workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz"
+      - "workspace-snapshot/parts/*.b64"
       - ".github/workflows/expand-workspace.yml"
 permissions:
   contents: write
 jobs:
   expand:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Expand workspace files into repository root
+      - name: Reassemble and validate workspace archive
         run: |
           mkdir -p /tmp/tcs-engine-import
-          tar -xzf workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz -C /tmp/tcs-engine-import
+          cat workspace-snapshot/parts/*.b64 | base64 --decode > /tmp/TCS-ENGINE_FREKUENSI_0317.tar.gz
+          tar -tzf /tmp/TCS-ENGINE_FREKUENSI_0317.tar.gz >/dev/null
+          tar -xzf /tmp/TCS-ENGINE_FREKUENSI_0317.tar.gz -C /tmp/tcs-engine-import
           rsync -a /tmp/tcs-engine-import/TCS-ENGINE/ ./
+          cp /tmp/TCS-ENGINE_FREKUENSI_0317.tar.gz workspace-snapshot/TCS-ENGINE_FREKUENSI_0317.tar.gz
       - name: Commit expanded workspace to main
         run: |
           git config user.name "github-actions[bot]"
