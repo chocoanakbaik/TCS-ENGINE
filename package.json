@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "TCS Engine — modular 2D/3D game engine by The Choco Studios",
   "type": "module",
-  "private": false,
+  "private": true,
   "main": "./dist/tcs-engine.umd.js",
   "module": "./dist/tcs-engine.es.js",
   "exports": {
@@ -35,5 +35,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "license": "UNLICENSED"
 }
