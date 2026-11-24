@@ -75,4 +75,4 @@ The story has five chapters and a **125-minute target first-playthrough duration
 
 ## Licensing
 
-TCS Engine and FREKUENSI 03:17 are developed by **The Choco Studios**. No third-party game art or audio packs are bundled. The GitHub repository currently does not declare a public open-source license; do not assume permission for redistribution or relicensing beyond the rights granted by the owner.
+TCS Engine and FREKUENSI 03:17 are developed by **The Choco Studios**. No third-party game art or audio packs are bundled. The GitHub repository currently does not declare a public open-source license. Package metadata is marked `UNLICENSED` and `private` to prevent accidental npm publication until TCS selects and adds an explicit license. Do not assume permission for redistribution or relicensing beyond the rights granted by the owner.
